@@ -1,0 +1,32 @@
+echo "ConectaJá"
+
+<p> ACESSO <p>
+    <form action = "acess.php" method = POST>
+        <label for = "AMBIENTE" >Tipo de Ambiente: </label>
+        <input type = "text" name = "AMBIENTE" id = "AMBIENTE">
+        <input type = "submit" value = "SOLICITAR">
+
+        </form>
+
+<?php
+
+if ($_SERVER[ "REQUEST_METHOD"] == "POST") {
+    $AMBIENTE = $_POST ["AMBIENTE"];
+switch ($AMBIENTE){
+    case "Residencial":
+        echo "Equipamento Indicado: Roteador Wireless (SOHO). 
+Para ambientes residenciais, um roteador Wi-Fi padrão é suficiente para conectar smartphones, TVs e notebooks.";
+            break;
+    case "Pequeno Escritório":
+        echo "Equipamento Indicado: Switch Gerenciável de 24 Portas.
+Para um escritório, recomendamos o uso de um Switch para conectar os computadores via cabo, garantindo estabilidade e segurança na rede local (LAN).";
+            break;
+    case "Datacenter":
+        echo "Equipamento Indicado: Roteador de Borda e Switch Layer 3.
+Para Data Centers, é necessária uma infraestrutura robusta com equipamentos de alta capacidade para lidar com grande tráfego de dados e roteamento avançado.";
+            break;
+    default:
+        echo "Ambiente não reconhecido em nosso banco de dados";
+}
+}
+?>
